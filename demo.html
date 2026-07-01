@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .topbtn {
+            background-color: red;
+            padding: 10px;
+            border-radius: 20px;
+            color: white;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 5;
+            cursor: pointer;
+            transform: 2s ease;
+            display: none;
+        }
+
+        body {
+            height: 4000px;
+        }
+        #demo {
+            text-align: center;
+            color: red;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <div id="main">
+        <p style="color: greenyellow;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia soluta debitis
+            obcaecati architecto odio quaerat maxime pariatur, repellendus ea error. Officia ipsa, magni accusamus
+            pariatur eaque dolores iusto ratione expedita.
+        <p>click <span style="background-color: greenyellow; color: white; padding: 15px;" id="register">here</span>to
+            register</p>
+        </p>
+    </div>
+    <div id="main2">
+        <p style="color: red;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia soluta debitis obcaecati
+            architecto odio quaerat maxime pariatur, repellendus ea error. Officia ipsa, magni accusamus pariatur eaque
+            dolores iusto ratione expedita.
+        <p>click <span style="background-color: red; color: white; padding: 15px;" id="login">here</span>to login</p>
+        </p>
+    </div>
+
+    <p class="topbtn"></p>
+
+</body>
+<script>
+
+setInterval( () => {
+    const time = new Date();
+    document.getElementById("demo").innerHTML = time.toLocaleTimeString();
+
+}, 1000)
+
+
+
+
+    const firstDiv = document.getElementById("main");
+    const secondDiv = document.getElementById("main2");
+    const register = document.getElementById("register");
+    const login = document.getElementById("login");
+
+    secondDiv.style.display = "none";
+
+    register.addEventListener("click", function () {
+        firstDiv.style.display = "none";
+        secondDiv.style.display = "block";
+    });
+
+
+    login.addEventListener("click", function () {
+        secondDiv.style.display = "none";
+        firstDiv.style.display = "block";
+    })
+
+    // scroll to the top 
+    let topbtn = document.querySelector(".topbtn");
+
+    window.addEventListener("scroll", function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            topbtn.style.display = "block";
+        } else {
+            topbtn.style.display = "none";
+        }
+    })
+
+    // move to the top 
+    topbtn.addEventListener("click", function () {
+        window.scrollTo({
+            top:0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>preloader</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+        img {
+            width: 50px;
+            animation: preloader infinite 1s;
+        }
+        @keyframes preloader {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(2);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <img src="image/1734446365632.jpg" alt="">
+    </div>
+    
+</body>
+<script>
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 3000);
+    </script>
+</html>

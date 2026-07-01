@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <p style="text-align: center; margin-top: 5%;">Register Here</p>
+    <center>
+        <form action="#">
+            <div>
+                <label for="">Username</label>
+                <input type="text" id="username">
+            </div>
+            <div>
+                <label for="">Email</label>
+                <input type="text" id="email">
+            </div>
+            <div>
+                <label for="">Password</label>
+                <input type="password" id="password">
+                <button id="show1">show</button>
+            </div>
+            <div>
+                <label for="">Confirm Password</label>
+                <input type="password" id="confirm-password">
+                <button id="show2">show</button>
+            </div>
+            <div>
+                <div id="msg" style="color: red;"></div>
+                <button id="submit">Submit</button>
+            </div>
+        </form>
+    </center>
+
+</body>
+<script>
+    const formm = document.querySelector("form");
+    if (formm) {
+        formm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const userName = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const pass = document.getElementById("password").value;
+            const conPass = document.getElementById("confirm-password").value;
+            const msg = document.getElementById("msg");
+            const btn = document.getElementById("submit");
+
+            btn.innerHtml = "processing...";
+            btn.disabled = true;
+
+            if (!userName) {
+                msg.innerHTML = "Usename field is required";
+                btn.innerHTML = "submit";
+                btn.disabled = false;
+                return;
+            }
+            if (email == "" || email == null) {
+                msg.innerHTML = "Email field is required";
+                btn.innerHTML = "submit";
+                btn.disabled = false;
+                return
+            }
+            if (email.indexOf("@") < 0) {
+                msg.innerHTML = "please enter a correct email address";
+                btn.innerHTML = "submit";
+                btn.disabled = false;
+                return
+            }
+            if (!pass) {
+                msg.innerHTML = "password field is required";
+                btn.innerHTML = "submit";
+                btn.disabled = false;
+                return;
+            }
+
+            if (!conPass) {
+                msg.innerHTML = "Confirm Password field is required"
+                btn.innerHTML = "submit";
+                btn.disabled = false;
+                return
+            }
+
+
+            if (pass != conPass) {
+                msg.innerHTML = "password and confirm password do not match"
+                btn.innerHTML = "submit";
+                btn.disabled = false;
+                return
+            }
+
+        })
+    }
+
+    // note password visible
+
+    let show1 = document.getElementById("show1");
+    show1.addEventListener("click", () => {
+        let passwordField = document.getElementById("password");
+        let check = passwordField.getAttribute("type");
+        if (check == "password") {
+            passwordField.setAttribute("type", "text");
+            show1.innerHTML = "hide";
+        } else {
+            passwordField.setAttribute("type", "password");
+            show1.innerHTML = "show";
+        }
+    })
+
+    let show2 = document.getElementById("show2");
+    show2.addEventListener("click", () => {
+        let passwordField = document.getElementById("confirm-password");
+        let check = passwordField.getAttribute("type");
+        if (check == "password") {
+            passwordField.setAttribute("type", "text");
+            show2.innerHTML = "hide";
+        } else {
+            passwordField.setAttribute("type", "password");
+            show2.innerHTML = "show";
+        }
+    })
+
+
+</script>
+
+</html>
